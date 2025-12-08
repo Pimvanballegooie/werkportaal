@@ -1,80 +1,297 @@
-// Zorg dat de DOM geladen is
-document.addEventListener("DOMContentLoaded", () => {
-  const loginScreen = document.getElementById("login-screen");
-  const app = document.getElementById("app");
-  const googleLoginButton = document.getElementById("google-login-button");
-  const logoutButton = document.getElementById("logout-button");
-  const navButtons = document.querySelectorAll(".nav-btn[data-page]");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  function showApp() {
-    if (loginScreen) loginScreen.style.display = "none";
-    if (app) app.style.display = "block";
+:root {
+  --bg: #f5f7fa;
+  --bg-card: #ffffff;
+  --bg-topbar: #ffffff;
+  --primary: #f58220;   /* Oranje-achtig, kun je aanpassen naar Monné-huisstijl */
+  --primary-dark: #d46c15;
+  --text-main: #1f2933;
+  --text-muted: #6b7480;
+  --border-subtle: #dde2ea;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 8px 20px rgba(15, 23, 42, 0.06);
+  --transition-fast: 0.18s ease-out;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+/* Login scherm */
+
+.login-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #ffffff, #e5edf6);
+  padding: 16px;
+  z-index: 10;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  max-width: 480px;
+  width: 100%;
+  padding: 32px 28px 28px;
+  text-align: center;
+}
+
+.login-logo {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.login-card h1 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.login-card p {
+  margin: 0 0 16px;
+  color: var(--text-muted);
+}
+
+.login-help {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* App layout */
+
+.app {
+  display: none; /* wordt via JS zichtbaar na login */
+  min-height: 100vh;
+}
+
+/* Topbar */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  background: var(--bg-topbar);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-logo {
+  width: 44px;
+  height: auto;
+}
+
+.topbar-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.portal-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Navigation */
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background var(--transition-fast), color var(--transition-fast),
+              box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-btn:hover {
+  background: rgba(245, 130, 32, 0.1);
+  color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.nav-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(245, 130, 32, 0.25);
+}
+
+.nav-btn.secondary {
+  border: 1px solid var(--border-subtle);
+  background: #f3f4f7;
+}
+
+/* Buttons algemeen */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(245, 130, 32, 0.25);
+}
+
+.btn.primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Main content */
+
+.main {
+  max-width: 1100px;
+  margin: 20px auto 40px;
+  padding: 0 16px;
+}
+
+.page {
+  display: none;
+}
+
+.page-active {
+  display: block;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.page-intro {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 16px 18px;
+}
+
+.card-text h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.card-meta {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-text p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* Zoekmachine embed */
+
+.search-embed-wrapper {
+  margin: 16px 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+  background: #ffffff;
+}
+
+.search-embed-wrapper iframe {
+  width: 100%;
+  min-height: 500px;
+  border: none;
+}
+
+.small-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Responsief */
+
+@media (min-width: 768px) {
+  .login-card {
+    padding: 40px 36px 32px;
   }
 
-  function showLogin() {
-    if (loginScreen) loginScreen.style.display = "flex";
-    if (app) app.style.display = "none";
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
 
-  // Netlify Identity initialiseren
-  if (window.netlifyIdentity) {
-    netlifyIdentity.on("init", (user) => {
-      if (user) {
-        showApp();
-      } else {
-        showLogin();
-      }
-    });
-
-    netlifyIdentity.on("login", () => {
-      showApp();
-    });
-
-    netlifyIdentity.on("logout", () => {
-      showLogin();
-    });
-
-    netlifyIdentity.init();
-  } else {
-    // Fallback: als Netlify Identity niet beschikbaar is
-    showApp();
+@media (min-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  // Login-knop: open Netlify Identity login (met Google als provider)
-  if (googleLoginButton && window.netlifyIdentity) {
-    googleLoginButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      netlifyIdentity.open("login");
-    });
-  }
-
-  // Uitloggen
-  if (logoutButton && window.netlifyIdentity) {
-    logoutButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      netlifyIdentity.logout();
-    });
-  }
-
-  // Navigatie tussen pagina's
-  navButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const target = btn.getAttribute("data-page");
-      if (!target) return;
-
-      // Active state in topbar
-      navButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      // Pagina's wisselen
-      const pages = document.querySelectorAll(".page");
-      pages.forEach((page) => {
-        if (page.id === `page-${target}`) {
-          page.classList.add("page-active");
-        } else {
-          page.classList.remove("page-active");
-        }
-      });
-    });
-  });
-});
+}
