@@ -1,4 +1,3 @@
-// Zorg dat de DOM geladen is
 document.addEventListener("DOMContentLoaded", () => {
   const loginScreen = document.getElementById("login-screen");
   const app = document.getElementById("app");
