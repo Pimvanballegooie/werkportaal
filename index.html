@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Monné Zorg & Beweging werkportaal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Netlify Identity widget (voor Google login) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- Login-scherm (zichtbaar zolang je niet bent ingelogd) -->
+  <div class="login-screen" id="login-screen">
+    <div class="login-card">
+      <img src="logo-monne.png" alt="Monné Zorg & Beweging logo" class="login-logo">
+      <h1>Monné Zorg &amp; Beweging werkportaal</h1>
+      <p>Log in met je Monné Google-account om het werkportaal te gebruiken.</p>
+      <button id="google-login-button" class="btn primary">
+        Inloggen met Google
+      </button>
+      <p class="login-help">
+        Let op: gebruik je <strong>@monne-zorgenbeweging.nl</strong> account.
+      </p>
+    </div>
+  </div>
+
+  <!-- Hoofd-app (alleen zichtbaar na login) -->
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="topbar-left">
+        <img src="logo-monne.png" alt="Monné Zorg & Beweging logo" class="topbar-logo">
+        <div class="topbar-title">
+          <span class="portal-name">Monné Zorg &amp; Beweging werkportaal</span>
+          <span class="portal-subtitle">Daily Monné en werkinformatie voor het team</span>
+        </div>
+      </div>
+      <nav class="topbar-nav">
+        <button class="nav-btn active" data-page="daily-monne">Daily Monné</button>
+        <button class="nav-btn" data-page="werkgroepen">Werkgroepen</button>
+        <button class="nav-btn" data-page="projecten">Projecten</button>
+        <button class="nav-btn" data-page="zoekmachine">Zoekmachine</button>
+        <button class="nav-btn secondary" id="logout-button">Uitloggen</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- Pagina: Daily Monné -->
+      <section class="page page-active" id="page-daily-monne">
+        <h2>Daily Monné</h2>
+        <p class="page-intro">
+          Korte updates, interne nieuwsitems en highlights uit de locaties en werkgroepen.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-text">
+              <h3>Start Daily Monné</h3>
+              <p class="card-meta">Algemeen · Werkportaal</p>
+              <p>
+                Welkom in het nieuwe werkportaal van Monné Zorg &amp; Beweging. Hier vind je vanaf nu 
+                interne nieuwsitems, updates uit de werkgroepen en informatie over projecten en initiatieven.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Voorbeeldnieuws: interne scholing</h3>
+              <p class="card-meta">Scholing · Voorbeeld</p>
+              <p>
+                Gebruik deze plek voor korte updates over scholingen, bijeenkomsten, casusbesprekingen 
+                of nieuwe protocollen. Je kunt zo veel nieuwsitems toevoegen als je wilt.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Voorbeeldnieuws: kwaliteit en projecten</h3>
+              <p class="card-meta">Kwaliteit · Voorbeeld</p>
+              <p>
+                In dit blok kun je bijvoorbeeld verwijzen naar kwaliteitsplannen, draaiboeken of 
+                lopende projecten. Later kun je deze tekst eenvoudig in de HTML aanpassen.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Pagina: Werkgroepen -->
+      <section class="page" id="page-werkgroepen">
+        <h2>Werkgroepen</h2>
+        <p class="page-intro">
+          Overzicht van de werkgroepen binnen Monné Zorg &amp; Beweging en ruimte voor nieuws per werkgroep.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-text">
+              <h3>Werkgroep Kansrijk opgroeien</h3>
+              <p class="card-meta">Werkgroep</p>
+              <p>
+                Plaats hier nieuws, afspraken en documenten rondom Kansrijk opgroeien. Bijvoorbeeld 
+                lopende projecten, contactpersonen en links naar relevante documenten.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Werkgroep Mentale gezondheid</h3>
+              <p class="card-meta">Werkgroep</p>
+              <p>
+                Gebruik dit blok voor updates over interventies, screenings, samenwerkingen en scholing 
+                binnen het thema mentale gezondheid.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Werkgroep Leefstijl / leefomgeving en kansengelijkheid</h3>
+              <p class="card-meta">Werkgroep</p>
+              <p>
+                Beschrijf hier de initiatieven rondom leefstijl, beweegprogramma’s en samenwerking met 
+                partners in de wijk.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Werkgroep Kwetsbare ouderen</h3>
+              <p class="card-meta">Werkgroep</p>
+              <p>
+                Denk aan valpreventie, Vallen Verleden Tijd, Otago, In Balans en andere projecten voor 
+                kwetsbare ouderen. Je kunt hier ook draaiboeken en afspraken linken.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Werkgroep Subsidies</h3>
+              <p class="card-meta">Werkgroep</p>
+              <p>
+                Plaats hier informatie over lopende subsidietrajecten, deadlines en besluiten, zodat 
+                iedereen de voortgang kan volgen.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Pagina: Projecten -->
+      <section class="page" id="page-projecten">
+        <h2>Projecten</h2>
+        <p class="page-intro">
+          Overzicht van projecten binnen Monné Zorg &amp; Beweging: van testdagen tot nieuwe locaties en pilots.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-text">
+              <h3>Voorbeeldproject: Valpreventie testdag</h3>
+              <p class="card-meta">Project · Voorbeeld</p>
+              <p>
+                Gebruik dit blok om projecten te beschrijven: doelen, planning, betrokken collega’s en 
+                koppelingen naar draaiboeken en checklists.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-text">
+              <h3>Voorbeeldproject: Nieuwe locatie / uitbreiding</h3>
+              <p class="card-meta">Project · Voorbeeld</p>
+              <p>
+                Hier kun je bijvoorbeeld informatie kwijt over nieuwe locaties, verbouwingen of pilots, 
+                zodat iedereen weet wat er speelt.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Pagina: Zoekmachine -->
+      <section class="page" id="page-zoekmachine">
+        <h2>Zoekmachine</h2>
+        <p class="page-intro">
+          Hieronder kun je de zoekmachine integreren die je eerder via GitHub hebt gebouwd.
+        </p>
+
+        <!-- Optie 1: Embed via iframe (vervang de src-URL door de URL van je zoekmachine) -->
+        <div class="search-embed-wrapper">
+          <iframe 
+            id="zoekmachine-iframe"
+            src="https://pimvanballegooie.github.io/je-zoekmachine-pad/"
+            title="Monné zoekmachine"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <p class="small-note">
+          Pas de <code>src</code> van het iframe in <strong>index.html</strong> aan naar de URL van je eigen zoekmachine,
+          of vervang deze sectie door je eigen HTML/JS als je de zoekmachine in dezelfde repository opneemt.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
