@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Netlify Identity widget (voor Google login) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Firebase SDK's (compat-variant, het makkelijkst voor dit project) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 </head>
 <body>
   <!-- Login-scherm (zichtbaar zolang je niet bent ingelogd) -->
@@ -24,7 +25,7 @@
         Inloggen met Google
       </button>
       <p class="login-help">
-        Let op: gebruik je <strong>@monne-zorgenbeweging.nl</strong> account.
+        Alleen medewerkers met een <strong>@monne-zorgenbeweging.nl</strong> account kunnen inloggen.
       </p>
     </div>
   </div>
@@ -200,7 +201,6 @@
           Hieronder kun je de zoekmachine integreren die je eerder via GitHub hebt gebouwd.
         </p>
 
-        <!-- Embed via iframe (pas de src aan naar de URL van je zoekmachine) -->
         <div class="search-embed-wrapper">
           <iframe 
             id="zoekmachine-iframe"
