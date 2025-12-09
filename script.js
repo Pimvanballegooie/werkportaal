@@ -4,12 +4,12 @@
 // Kopieer het object en plak het i.p.v. de placeholders hieronder.
 
 const firebaseConfig = {
-  apiKey: "VUL_HIER_IN",
-  authDomain: "VUL_HIER_IN",
-  projectId: "VUL_HIER_IN",
-  storageBucket: "VUL_HIER_IN",
-  messagingSenderId: "VUL_HIER_IN",
-  appId: "VUL_HIER_IN"
+  apiKey: "AIzaSyBRbYYLfa8BygNyFWjbsCq9F6KPnoaP030",
+  authDomain: "mzb-werkportaal.firebaseapp.com",
+  projectId: "mzb-werkportaal",
+  storageBucket: "mzb-werkportaal.firebasestorage.app",
+  messagingSenderId: "523970155940",
+  appId: "1:523970155940:web:fbbb0e9ac1a42a552d9d31"
 };
 
 // NIETS AANPASSEN ONDER DIT COMMENTAAR, Tenzij je weet wat je doet.
